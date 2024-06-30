@@ -12,7 +12,8 @@ class CourseCrawler:
         self.base_url = "https://xkcts.ucas.ac.cn:8443/course/courseplan/"
         self.login_url = "https://sep.ucas.ac.cn"
         self.session = requests.Session()
-        self.batch_size = batch_size
+        self.batch_size = self.config['batch_size']
+        self.range = (self.config['start'], self.config['end'])
         self.data_dir = 'data'
         if not os.path.exists(self.data_dir):
             os.makedirs(self.data_dir)
@@ -72,12 +73,12 @@ class CourseCrawler:
         with open(filename, 'w', encoding='utf-8') as jsonfile:
             json.dump(batch, jsonfile, ensure_ascii=False, indent=4)
 
-    def crawl(self, start_id, end_id):
+    def crawl(self):
         self.login()
         course_plans = []
         batch_number = 0
 
-        for course_id in tqdm(range(start_id, end_id + 1)):
+        for course_id in tqdm(range(self.range[0], self.range[1] + 1)):
             course_plan = self.fetch_course(course_id)
             if course_plan:
                 course_plans.append(course_plan)
