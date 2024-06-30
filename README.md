@@ -54,13 +54,13 @@ pip install requests beautifulsoup4 tqdm pyqt5
 ```
 
 #### 2. 配置文件
-在项目根目录下创建 `config.json` 文件，填写登录信息、使用模式、批次大小和爬取范围：
+在项目根目录下创建 `config.json` 文件，填写登录信息、使用模式(`crawl` or `query`)、批次大小和爬取范围：
 ```json
 {
   "username": "your_username",
   "password": "your_password",
   "batch_size": 200,
-  "mode": "crawl" or "query",
+  "mode": "query",
   "start": 0,
   "end": 999999
 }
