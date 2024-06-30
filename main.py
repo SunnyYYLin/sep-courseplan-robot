@@ -4,9 +4,12 @@ from viewer import HtmlViewer
 from PyQt5.QtWidgets import QApplication
 import sys
 import json
+import os
 
 if __name__ == '__main__':
-    with open('config.json', 'r') as f:
+    work_dir = os.path.dirname(os.path.abspath(__file__))
+    config_dir = os.path.join(work_dir, 'config.json')
+    with open(config_dir, 'r') as f:
         config = json.load(f)
         
     if config['mode'] == 'crawl':
@@ -14,7 +17,7 @@ if __name__ == '__main__':
         crawler.crawl()
     elif config['mode'] == 'query':
         app = QApplication(sys.argv)
-        reader = CourseReader(data_dir='data')
+        reader = CourseReader()
         viewer = HtmlViewer(course_reader=reader)
         viewer.show()
         sys.exit(app.exec_())

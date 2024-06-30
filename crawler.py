@@ -14,7 +14,7 @@ class CourseCrawler:
         self.session = requests.Session()
         self.batch_size = self.config['batch_size']
         self.range = (self.config['start'], self.config['end'])
-        self.data_dir = 'data'
+        self.data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
         if not os.path.exists(self.data_dir):
             os.makedirs(self.data_dir)
 

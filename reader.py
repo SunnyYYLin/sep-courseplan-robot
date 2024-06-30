@@ -3,9 +3,9 @@ import os
 from typing import List
 
 class CourseReader:
-    def __init__(self, data_dir, index_dir="index"):
-        self.data_dir = data_dir
-        self.index_dir = index_dir
+    def __init__(self, data_dir="data", index_dir="index"):
+        self.data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), data_dir)
+        self.index_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), index_dir)
         self.course_index_file = os.path.join(self.index_dir, 'course_index.json')
         self.file_index_file = os.path.join(self.index_dir, 'file_index.json')
         self.course_index = {}
