@@ -81,7 +81,7 @@ python main.py
 5. 在课程列表中选择一门课程，详细信息将显示在右侧的 HTML 查看器中。
 
 ### 示例截图
-![alt text](doc/ui.png)
+![alt text](doc/image.png)
 
 ### 贡献
 欢迎对本项目提出意见或建议，您可以通过创建 Issue 或 Pull Request 的方式进行贡献。
