@@ -62,7 +62,8 @@ pip install requests beautifulsoup4 tqdm pyqt5
   "batch_size": 200,
   "mode": "query",
   "start": 0,
-  "end": 999999
+  "end": 999999,
+  "font_size": 24
 }
 ```
 
@@ -77,7 +78,7 @@ python main.py
 2. 若为`crawl`模式，程序将开始爬取课程信息，显示进度条。
 3. 若为`query`模式，程序将启动图形用户界面。
 4. 使用搜索框输入课程编码或名称进行搜索。
-5. 在课程列表中选择一门课程，详细信息将显示在下方的 HTML 查看器中。
+5. 在课程列表中选择一门课程，详细信息将显示在右侧的 HTML 查看器中。
 
 ### 示例截图
 ![alt text](doc/ui.png)

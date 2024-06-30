@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QListWidget, QListWidgetItem, QLineEdit, QLabel, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QListWidget, QListWidgetItem, QLineEdit, QLabel, QHBoxLayout, QSplitter
 from PyQt5.QtCore import Qt
 from reader import CourseReader
 from typing import List
@@ -38,12 +38,17 @@ class HtmlViewer(QMainWindow):
         # Course list
         self.course_list = QListWidget()
         self.course_list.itemClicked.connect(self.display_course)
-        self.layout.addWidget(self.course_list)
 
         # HTML viewer
         self.html_viewer = QTextEdit()
         self.html_viewer.setReadOnly(True)
-        self.layout.addWidget(self.html_viewer)
+
+        # Splitter to make course list and HTML viewer adjustable
+        self.splitter = QSplitter(Qt.Horizontal)
+        self.splitter.addWidget(self.course_list)
+        self.splitter.addWidget(self.html_viewer)
+
+        self.layout.addWidget(self.splitter)
 
         self.load_courses()
 
@@ -67,8 +72,6 @@ class HtmlViewer(QMainWindow):
             if code_search_text in course_code.lower() and name_search_text in course_name.lower():
                 filtered_courses.append((course_id, course_code, course_name))
         self.display_courses(filtered_courses)
-        
-        return filtered_courses
 
     def display_course(self, item) -> None:
         course_id = int(item.data(Qt.UserRole))

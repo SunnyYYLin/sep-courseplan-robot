@@ -2,6 +2,7 @@ from crawler import CourseCrawler
 from reader import CourseReader
 from viewer import HtmlViewer
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtGui import QFont
 import sys
 import json
 import os
@@ -17,6 +18,9 @@ if __name__ == '__main__':
         crawler.crawl()
     elif config['mode'] == 'query':
         app = QApplication(sys.argv)
+        font = QFont()
+        font.setPointSize(config['font_size'])
+        app.setFont(font)
         reader = CourseReader()
         viewer = HtmlViewer(course_reader=reader)
         viewer.show()
