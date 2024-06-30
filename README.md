@@ -14,7 +14,7 @@ CoursePlan Management System/
 ├── viewer.py          # 图形用户界面模块
 ├── config.json        # 配置文件
 └── data/              # 数据存储目录
-└── data/              # 索引储存目录
+└── index/              # 索引储存目录
 ```
 
 ### 功能介绍
